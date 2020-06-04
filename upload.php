@@ -1,7 +1,7 @@
-$target = "upload/";
+ $target = "upload/";
 $target = $target . basename( $_FILES['uploaded']['name']) ;
 $ok=1;
-//size condition
+//This is our size condition
 if ($uploaded_size > 350000)
 {
 echo "Your file is too large.
@@ -10,25 +10,26 @@ $ok=0;
 }
 //This is our limit file type condition
 if ($uploaded_type =="text/php")
-  {
-    echo "No PHP files";
-    $ok=0;
-  }
+{
+echo "No PHP files
+";
+$ok=0;
+}
 //Here we check that $ok was not set to 0 by an error
 if ($ok==0)
-  {
-    Echo "Sorry, your file was not uploaded";
-  }
+{
+Echo "Sorry, your file was not uploaded";
+}
 //If everything is ok we try to upload it
 else
-  {
-    if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $target))
-    {
-      echo "The file ". basename( $_FILES['uploadedfile']['name']). " has been uploaded";
-    }
-    else
-    {
-      echo "Sorry, there was a problem uploading your file.";
-    }
-  }
+{
+if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $target))
+{
+echo "The file ". basename( $_FILES['uploadedfile']['name']). " has been uploaded";
+}
+else
+{
+echo "Sorry, there was a problem uploading your file.";
+}
+}
 ?>
